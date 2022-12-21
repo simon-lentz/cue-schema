@@ -1,1 +1,1 @@
-module: ""
+module: "github.com/simon-lentz/cueSchema"
