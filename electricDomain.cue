@@ -1,4 +1,4 @@
-package schema
+package cueSchema
 
 #Entity: {
     knownAs: string | *""
