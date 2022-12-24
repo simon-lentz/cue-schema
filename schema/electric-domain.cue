@@ -9,8 +9,8 @@ package schema
 	governmental:       *"" | "federal" | "regional" | "state" | "local"
 	domain:             *"electric power" | string
 	name:               *"" | string
-	endUser:            *true | bool
-	serviceProvider:    *true | bool
+	endUser:            *false | bool
+	serviceProvider:    *false | bool
 	BUSINESS_RELATIONSHIP_WITH_Entity?: [...#EDGE_BUSINESS_RELATIONSHIP_WITH_Entity]
 	ADOPTED_Initiative?: [...#EDGE_ADOPTED_Initiative]
 	PROVIDES_Service?: {
@@ -31,8 +31,8 @@ package schema
 	gridStabilization:           *"" | "increases" | "neutral" | "decreases"
 	powerGenerationMW:           *0.0 | float
 	geoThermalPowerCapacityMW:   *0.0 | float
-	sustainabiltyFocused:        *true | bool
-	electricUtilityService:      *true | bool
+	sustainabiltyFocused:        *false | bool
+	electricUtilityService:      *false | bool
 	solarCaptureTechnology:      *"" | string
 	geoThermalCaptureType:       *"" | string
 	domain:                      *"electric power" | string
@@ -41,7 +41,7 @@ package schema
 	windCaptureTechnology:       *"" | "horizontal" | "vertical" | "bladeless"
 	economicModel:               *"" | "community benefits" | "public benefits" | "financial returns"
 	geographicalScale:           *"" | "local" | "regional" | "national"
-	electricTransmissionService: *true | bool
+	electricTransmissionService: *false | bool
 	comment:                     *"" | string
 	description:                 *"" | string
 	nuclearPowerTechnology:      *"" | string
@@ -54,7 +54,7 @@ package schema
 	biomassCaptureType:          *"" | "waste-to-energy" | "methane capture"
 	targetUsers:                 *"" | "commercial" | "residential"
 	hydroPowerCapacityMW:        *0.0 | float
-	electricWholesalingService:  *true | bool
+	electricWholesalingService:  *false | bool
 	PROVIDED_TO_Entity?: {
 		WHERE: #REF_TO_ENTITY
 	}
@@ -82,7 +82,7 @@ package schema
 	domain:                          *"electric power" | string
 	knownAs:                         *"" | string
 	purpose:                         *"" | string
-	decarbonizationPlan:             *true | bool
+	decarbonizationPlan:             *false | bool
 	mandatedDecarbonizationTargets:  *"percent, date" | string
 	voluntaryDecarbonizationTargets: *"percent, date" | string
 	description:                     *"" | string
@@ -134,7 +134,7 @@ package schema
 }
 
 #GovernmentAuthority: {
-	regulatoryAgency: *true | bool
+	regulatoryAgency: *false | bool
 	description:      *"" | string
 	comment:          *"" | string
 	knownAs:          *"" | string
@@ -249,12 +249,28 @@ package schema
 	domain:      *"electric power" | string
 }
 
+Entity: #Entity & {}
+
+Service: #Service & {}
+
+Project: #Project & {}
+
+Initiative: #Initiative & {}
+
+Regulation: #Regulation & {}
+
+Place: #Place & {}
+
+GovernmentAuthority: #GovernmentAuthority & {}
+
 #Graph: {
-	#Entities: [...#Entity]
-	#Services: [...#Service]
-	#Projects: [...#Project]
-	#Initiatives: [...#Initiative]
-	#Regulations: [...#Regulation]
-	#Places: [...#Place]
-	#GovernmentAuthorities: [...#GovernmentAuthority]
+	#Entities: [...Entity]
+	#Services: [...Service]
+	#Projects: [...Project]
+	#Initiatives: [...Initiative]
+	#Regulations: [...Regulation]
+	#Places: [...Place]
+	#GovernmentAuthorities: [...GovernmentAuthority]
 }
+
+Graph: #Graph & {}
