@@ -23,6 +23,7 @@ package schema
 }
 
 #Service: {
+	knownAs:                     *"" | string
 	powerDeliveryMW:             *0.0 | float
 	solarPowerCapacityMWhYear:   *0.0 | float
 	biomassCarbonImpact:         *"" | "emissions neutral" | "reduces existing emissions" | "non-positive impact"
@@ -245,8 +246,8 @@ package schema
 	knownAs: *"" | string
 }
 #REF_TO_SERVICE: {
-	description: *"" | string
-	domain:      *"electric power" | string
+	knownAs: *"" | string
+	domain:  *"electric power" | string
 }
 
 Entity: #Entity & {}
